@@ -1,0 +1,15 @@
+redis
+requests
+openpyxl
+xlrd
+numpy
+pandas
+websocket_client
+bs4
+aiohttp
+dash
+plotly
+flask
+humanize
+slack_sdk
+scipy
