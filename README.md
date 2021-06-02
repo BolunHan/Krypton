@@ -4,4 +4,4 @@ KryptoCurrency data relay service.
 
 python 3.8+ required
 
-clone with `git clone https://BolunHan.github.com/BolunHan/Krypton.git`
+clone with `git clone https://github.com/BolunHan/Krypton.git`

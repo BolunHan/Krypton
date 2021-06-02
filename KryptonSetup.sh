@@ -34,7 +34,7 @@ echo -n "setup requirements...  "
 sudo apt update -qq > /dev/null 2> /dev/null
 sudo apt install python3.8 python3.8-venv python3.8-dev git redis -y -qq > /dev/null 2> /dev/null
 # clone the project
-git clone https://BolunHan.github.com/BolunHan/Krypton.git --quiet
+git clone https://github.com/BolunHan/Krypton.git --quiet
 # make venv
 cd Krypton || exit 1
 python3.8 -m venv venv
