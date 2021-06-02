@@ -3,10 +3,13 @@ __package__ = 'Krypton.Relay'
 import json
 import os
 import pathlib
+import sys
 import traceback
 from typing import List
 
 import redis
+
+sys.path.append(os.getcwd())
 
 from ..API.Huobi.Spot import API
 from ..Base import CONFIG, EVENT_ENGINE, LOGGER, GlobalStatics
