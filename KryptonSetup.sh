@@ -57,6 +57,7 @@ sudo systemctl restart redis.service
 echo "Done"
 echo "Setup complete! Firewall port 13168 must be manually opened to subscribe data."
 screen -S Krypton.Huobi.Spot -d -m env KRYPTON_CWD=Huobi python Krypton/Relay/Huobi.Spot.py
+echo "Huobi Relay service start!"
 screen -S Krypton.Binance.Spot -d -m env KRYPTON_CWD=Binance python Krypton/Relay/Binance.Spot.py
-echo "Relay service start!"
+echo "Binance Relay service start!"
 exit 0
