@@ -33,7 +33,7 @@ class Market(object, metaclass=abc.ABCMeta):
         self.event_engine.register_handler(topic=self.topic_set.subscribe, handler=self.subscribe)
 
     def unregister(self):
-        self.event_engine.unregister_handler(topic=GlobalStatics.TOPIC.subscribe, handler=self.subscribe)
+        self.event_engine.unregister_handler(topic=self.topic_set.TOPIC.subscribe, handler=self.subscribe)
 
     def _on_market(self, market_data: MarketData, **kwargs):
         self.event_engine.put(topic=self.topic_set.push(market_data=market_data), market_data=market_data, **kwargs)

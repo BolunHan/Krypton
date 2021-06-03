@@ -1,3 +1,4 @@
+import os
 from types import SimpleNamespace
 
 from ._Exceptions import Exceptions
@@ -62,7 +63,12 @@ class _GlobalStatics(object):
         self.SHARE = 'x'
         self.TOPIC = _TopicSet
 
-        self.WORKING_DIRECTORY = _Constants(str(FILE_PATH.parent.parent))
+        if 'KRYPTON_CWD' in os.environ:
+            self.WORKING_DIRECTORY = _Constants(os.path.realpath(os.environ['KRYPTON_CWD']))
+        else:
+            self.WORKING_DIRECTORY = _Constants(str(FILE_PATH.parent.parent))
+
+        os.makedirs(self.WORKING_DIRECTORY.value, exist_ok=True)
 
     def add_static(self, name: str, value):
         setattr(self, name, _Constants(value))
