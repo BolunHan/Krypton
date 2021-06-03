@@ -1,12 +1,13 @@
 import configparser
 import json
+import os.path
 import pathlib
 
 import dateutil
 import pandas as pd
 
 from ._Statics import GlobalStatics
-from ..Res.ToolKit import AttrDict
+from ..Res.ToolKit import AttrDict, get_current_path
 
 CONFIG = AttrDict()
 CWD = pathlib.Path(GlobalStatics.WORKING_DIRECTORY.value)
@@ -51,4 +52,7 @@ def from_ini(file_path):
             sub_dict[key] = value
 
 
-from_ini(CWD.joinpath('config.ini'))
+if os.path.isfile(CWD.joinpath('config.ini')):
+    from_ini(CWD.joinpath('config.ini'))
+else:
+    from_ini(get_current_path().parent.parent.joinpath('config.ini'))
