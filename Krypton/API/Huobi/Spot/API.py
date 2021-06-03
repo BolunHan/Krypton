@@ -29,8 +29,8 @@ class Market(Template.Market):
             self,
             market_url,
             event_engine,
+            logger,
             http_proxy: str = None,
-            logger=None,
             tick_level: str = 'step0',
             bar_span: datetime.timedelta = datetime.timedelta(seconds=60),
             tick_span: Optional[float] = None,
@@ -43,7 +43,6 @@ class Market(Template.Market):
         self.market_client = WebsocketsClient.HuobiWebsocketsClient(
             name='Huobi.Spot.Market.Websockets.Client',
             url=market_url,
-            event_engine=event_engine,
             proxy=http_proxy
         )
 

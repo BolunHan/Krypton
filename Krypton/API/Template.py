@@ -30,7 +30,7 @@ class Market(object, metaclass=abc.ABCMeta):
         if event_engine is not None:
             self.event_engine = event_engine
 
-        self.event_engine.register_handler(topic=GlobalStatics.TOPIC.subscribe, handler=self.subscribe)
+        self.event_engine.register_handler(topic=self.topic_set.subscribe, handler=self.subscribe)
 
     def unregister(self):
         self.event_engine.unregister_handler(topic=GlobalStatics.TOPIC.subscribe, handler=self.subscribe)
