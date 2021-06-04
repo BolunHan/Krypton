@@ -30,7 +30,7 @@ class RelayServer(object):
         self.redis_conn = redis_conn
         self.cache_size = cache_size
 
-        self.enable_redis = True
+        self.enable_redis = False
         self.cache_dir = CWD.joinpath('DataCache').joinpath(f'{self.name}')
 
         os.makedirs(self.cache_dir, exist_ok=True)
@@ -108,11 +108,12 @@ class RelayServer(object):
     def start(self):
         self.api.register()
 
-        try:
-            self._purge_record()
-        except redis.exceptions.ConnectionError as _:
-            self.enable_redis = False
-            self.logger.error('Redis connection failed! publish function disabled!')
+        if self.enable_redis:
+            try:
+                self._purge_record()
+            except redis.exceptions.ConnectionError as _:
+                self.enable_redis = False
+                self.logger.error('Redis connection failed! publish function disabled!')
 
         self.subscribe_all()
 
