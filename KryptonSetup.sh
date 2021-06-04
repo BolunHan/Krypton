@@ -13,7 +13,9 @@ while true; do
   case $yn in
       [Yy]* )
         echo "clean old installation... "
-        screen -S Krypton -X quit
+#        killall screen
+        screen -S Krypton.Huobi.Spot -X quit
+        screen -S Krypton.Binance.Spot -X quit
         sudo rm -r Krypton
         sudo apt purge redis redis-tools -y -qq > /dev/null 2> /dev/null
         sudo rm -r /etc/redis
